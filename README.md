@@ -1,1 +1,1 @@
-# awsosme_resume_with_flask
+# awsome_resume_with_flask
