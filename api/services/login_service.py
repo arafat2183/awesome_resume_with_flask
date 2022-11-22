@@ -1,4 +1,4 @@
-from templates.api.services import BaseArwfService
+from api.services import BaseArwfService
 
 
 class LoginService(BaseArwfService):
