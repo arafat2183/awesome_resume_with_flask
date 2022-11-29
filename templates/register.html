@@ -4,7 +4,20 @@
         <form method="post" action="">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Log In</legend>
+            <legend class="border-bottom mb-4">Registration</legend>
+            <div class="form-group">
+            {{ form.username.label() }}
+            {% if form.username.errors %}
+                {{ form.username(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                {% for error in form.username.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+                </div>
+            {% else %}
+                {{ form.username(class="form-control") }}
+            {% endif %}
+            </div>
             <div class="form-group">
             {{ form.email.label() }}
             {% if form.email.errors %}
@@ -31,22 +44,28 @@
                 {{ form.password(class="form-control") }}
             {% endif %}
             </div>
-            <div class="form-check">
-            {{ form.remember(class="form-check-input") }}
-            {{ form.remember.label(class="form-check-label") }}
+            <div class="form-group">
+            {{ form.confirm_password.label() }}
+            {% if form.confirm_password.errors %}
+                {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                {% for error in form.confirm_password.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+                </div>
+            {% else %}
+                {{ form.confirm_password(class="form-control") }}
+            {% endif %}
             </div>
         </fieldset>
         <div class="form-group">
             {{ form.submit(class="btn btn-outline-info") }}
         </div>
-        <small class="text-muted ml-2">
-            <a href="#">Forgot Password?</a>
-        </small>
         </form>
     </div>
     <div class="border-top pt-3">
         <small class="text-muted">
-        Don't Have An Account Yet? <a class="ml-2" href="{{ url_for('registration')}}">Sign Up</a>
+        Already have account?  <a class="ml-2" href="{{ url_for('login')}}">Log In</a>
         </small>
     </div>
 {% endblock %}
