@@ -1,6 +1,10 @@
-# import connexion
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms.validators import DataRequired, Length, EqualTo, Email
 
-from api.services.login_service import LoginService
 
-def login_controller():
-    return "working"
+class LoginController(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember = BooleanField('Remember Me')
+    submit = SubmitField('Login')
