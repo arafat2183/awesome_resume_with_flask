@@ -1,5 +1,5 @@
-from datetime import datetime
 from flask import Flask, render_template, url_for, flash, redirect
+from datetime import datetime
 from api.controllers.login_controller import LoginController
 from api.controllers.registration_controller import RegistrationController
 
